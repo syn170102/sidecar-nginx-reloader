@@ -8,6 +8,6 @@ ADD main.go /go/src/app/
 WORKDIR /go/src/app
 RUN CGO_ENABLED=0 GOOS=linux go build -a -o nginx-reloader .
 # main image
-FROM 10.11.20.82/kubernetes/nginx:1.22.0
+FROM registry.cn-beijing.aliyuncs.com/syn170102/nginx:1.22.0
 COPY --from=build /go/src/app/nginx-reloader /
 CMD ["/nginx-reloader"]
